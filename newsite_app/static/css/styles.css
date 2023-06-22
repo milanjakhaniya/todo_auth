@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    margin-left: 35%;
+    margin-right: 35%;
+    background-color: bisque;
+    display: -ms-inline-grid;
+    border: 2px solid black;
+    padding: 40px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="submit"],
+input[type="button"],
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button:hover {
+    background-color: #45a049;
+}
+
+/* Styling for the form */
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+small {
+    color: #888;
+}
+
+button[type="submit"] {
+    background-color: #8fe754;
+    border: 2px solid black;
+    color: rgb(18, 7, 7);
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #b3e92c;
+}
