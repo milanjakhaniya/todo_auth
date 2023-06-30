@@ -4,8 +4,8 @@
         <p>
             {{ task.title }} - {{ task.description }} - {{ task.completed }}
             <a href="{% url 'task_update' task.id %}">Edit</a>
-            <a href="{% url 'task_delete' task.id %}" onclick="return confirm('Are you sure you want to delete this task?');">Delete</a>
+            <a href="{% url 'task_delete' task.id %}" onclick="return confirm('Are you sure you want to delete this task?');"><button class="button-delete-task">Delete Task</button></a>
         </p>
 {% endfor %}
-<a href="{% url 'task_create' %}">Create Task</a>
+<a href="{% url 'task_create' %}"><button class="button-create-task">Create Task</button></a>
 {% endblock %}

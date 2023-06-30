@@ -1,9 +1,84 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Register</h2>
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">Register</button>
-    </form>
+{% load static %}
+<section class="vh-100" style="background-color: #9A616D;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+
+              <img src="{% static 'css/img/banner_1.jpg' %}"
+              
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form action='' method='POST' novalidate>
+                  {% csrf_token %}
+                  {% if form.errors %}
+                      {% for field in form %}
+                          {% for error in field.errors %}
+                            <div class="toast align-items-center text-white bg-primary border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                              <div class="d-flex">
+                                <div class="toast-body">
+                                  <strong>{{ field.label }}</strong><span>{{ error|escape }}</strong>
+                                </div>
+                                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                              </div>
+                            </div>
+                          {% endfor %}
+                      {% endfor %}
+                      {% for error in form.non_field_errors %}
+                          <div class="alert alert-danger">
+                              <strong>{{ error|escape }}</strong>
+                          </div>
+                      {% endfor %}
+                  {% endif %}
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                    <img src="{% static 'css/img/logo.png' %}"> 
+                    <span class="h1 fw-bold mb-0"> </span>
+                  </div>
+
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Registration form</h5>
+
+                  <div class="form-outline mb-4">
+                    <input type="email" id="username" name="username" class="form-control form-control-lg" />
+                    <label class="form-label" for="form2Example17">Username</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="password1" name="password1" class="form-control form-control-lg" />
+                    <label class="form-label" for="form2Example27">Password</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="password2" name="password2" class="form-control form-control-lg" />
+                    <label class="form-label" for="form2Example27">Confirm Password</label>
+                  </div>
+
+
+                  <div class="pt-1 mb-4">
+                    <button class="btn btn-dark btn-lg btn-block" type="submit">Register</button>
+                  </div>
+
+                  <a class="small text-muted" href="#!" style='visibility: hidden;'>Forgot password?</a>
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Have an account? Click here to <a href="{% url 'login' %}"
+                      style="color: #393f81;">Login</a></p>
+                  {% comment %} <a href="#!" class="small text-muted">Terms of use.</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a> {% endcomment %}
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock content %}

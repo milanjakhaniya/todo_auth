@@ -7,15 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Django CRUD{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
   </head>
-  <body>
+  <body class="bg-white">
     <div style="text-align: right">
       {% if user.is_authenticated %}
-      <span>Welcome, {{ user.username }}! </span>
-      <a href="{% url 'logout' %}">Logout</a>
-      {% else %}
-      <a href="{% url 'login' %}">Login</a> |
-      <a href="{% url 'register' %}">Register</a>
+      <span class="badge bg-secondary">Welcome, {{ user.username }}! </span>
+      <a href="{% url 'logout' %}"><button class="button-sign-out">Sign Out</button></a>
+      {% comment %} {% else %} {% endcomment %}
+      {% comment %} <a href="{% url 'login' %}">Login</a> |
+      <a href="{% url 'register' %}">Register</a> {% endcomment %}
       {% endif %}
     </div>
     {% block content %} {% endblock %}
