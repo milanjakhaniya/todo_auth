@@ -12,17 +12,50 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'fontawesomefree/js/fontawesome.js' %}"></script>
+    <script src="{% static 'fontawesomefree/js/solid.js' %}"></script>
+    <script src="{% static 'fontawesomefree/js/brands.js' %}"></script>
+    
   </head>
   <body class="bg-white">
-    <div style="text-align: right">
-      {% if user.is_authenticated %}
-      <span class="badge bg-secondary">Welcome, {{ user.username }}! </span>
-      <a href="{% url 'logout' %}"><button class="button-sign-out">Sign Out</button></a>
-      {% comment %} {% else %} {% endcomment %}
-      {% comment %} <a href="{% url 'login' %}">Login</a> |
-      <a href="{% url 'register' %}">Register</a> {% endcomment %}
-      {% endif %}
-    </div>
-    {% block content %} {% endblock %}
+    <section class="vh-100" style="background-color: #9A616D;">
+      <div class="me-5" style="text-align: right">
+        {% if user.is_authenticated %}
+  
+        <div>
+          <span class="badge bg-secondary">Welcome, {{ user.username }} ..! </span>
+          <a href="{% url 'logout' %}">
+            <button type="button" class="btn btn-sm btn-dark"><i class="fa-solid fa-power-off"></i> Sign Out</button>
+          </a>
+        </div>
+       
+        {% comment %} {% else %} {% endcomment %}
+        {% comment %} <a href="{% url 'login' %}">Login</a> |
+        <a href="{% url 'register' %}">Register</a> {% endcomment %}
+        {% endif %}
+      </div>
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-xl-10">
+            <div class="card" style="border-radius: 1rem;">
+              <div class="row g-0">
+                <div class="col-md-6 col-lg-5 d-none d-md-block">
+    
+                  <img src="{% static 'css/img/banner_1.jpg' %}" alt="Banner" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                </div>
+                <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                  <div class="card-body p-4 p-lg-5 text-black">
+                    {% block content %} {% endblock %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

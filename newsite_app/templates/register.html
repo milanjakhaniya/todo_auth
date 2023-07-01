@@ -18,26 +18,55 @@
               <div class="card-body p-4 p-lg-5 text-black">
 
                 <form action='' method='POST' novalidate>
-                  {% csrf_token %}
-                  {% if form.errors %}
-                      {% for field in form %}
-                          {% for error in field.errors %}
-                            <div class="toast align-items-center text-white bg-primary border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
-                              <div class="d-flex">
-                                <div class="toast-body">
-                                  <strong>{{ field.label }}</strong><span>{{ error|escape }}</strong>
+                        <div id='error-alert'>
+                              {% csrf_token %}
+                              {% if form.errors %}
+                              <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                                <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                                  <div class="toast-header">
+                                    <img src="{% static 'css/img/logo.png' %}" class="rounded me-2" alt="logo" style="hight:16px; width:30px;">
+                                    <strong class="me-auto">Validation Errors</strong>
+                                    <small>Just Now</small>
+                                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                  </div>
+                                  {% for field in form %}
+                                      {% for error in field.errors %}
+                                      
+                                          <div class="toast-body border-bottom">
+                                            <strong>{{ field.label }}:</strong><span> {{ error|escape }}</strong>
+                                          </div>
+                                        
+                                          {% comment %} <div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                            <strong>{{ field.label }}</strong><span>{{ error|escape }}</strong>
+                                          </div> {% endcomment %}
+                                      {% endfor %}
+                                  {% endfor %}
+                                  {% for error in form.non_field_errors %}
+                                  <div class="toast-body border-bottom">
+                                    <strong>{{ error|escape }}</strong>
+                                  </div>
+                                      {% comment %} <div class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                        <strong>{{ error|escape }}</strong>
+                                      </div> {% endcomment %}
+                                  {% endfor %}
                                 </div>
-                                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                               </div>
-                            </div>
-                          {% endfor %}
-                      {% endfor %}
-                      {% for error in form.non_field_errors %}
-                          <div class="alert alert-danger">
-                              <strong>{{ error|escape }}</strong>
-                          </div>
-                      {% endfor %}
-                  {% endif %}
+                              {% endif %}
+                        </div>
+
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      setTimeout(function() {
+                        var errorAlert = document.getElementById('error-alert');
+                        if (errorAlert) {
+                          errorAlert.style.display = 'none';
+                        }
+                      }, 3000); // 3 seconds
+                    });
+                  </script>
+
                   <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                     <img src="{% static 'css/img/logo.png' %}"> 
