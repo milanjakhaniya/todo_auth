@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#)*#j*&auh*dn@o!sakwz8*zy$cc4++%it#-h8w&p7^g2^3)@c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['milan555.pythonanywhere.com']
 
 
 # Application definition
@@ -118,7 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = (BASE_DIR, 'staticfiles')
+STATIC_ROOT = '/home/milan555/todo_auth/newsite_app/static'
 STATIC_URL = '/static/'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'task_list'
@@ -133,4 +133,3 @@ PASSWORD_RESET_URL = 'password_reset'
 PASSWORD_RESET_DONE_URL = 'password_reset_done'
 PASSWORD_RESET_CONFIRM_URL = 'password_reset_confirm'
 PASSWORD_RESET_COMPLETE_URL = 'password_reset_complete'
-
