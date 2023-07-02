@@ -11,12 +11,16 @@ from django.http import HttpResponseForbidden
 
 
 def register(request):
+    print(request.user)
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            auth_login(request, user)
-            return redirect('task_list')
+            # auth_login(request, user)
+            form = UserCreationForm()
+            return render(request, 'register.html', {'form': form, 'message' : f"User '{user.username}' created successfully..!!"})
+    elif request.user and request.user.username:
+        return redirect('task_list')
     else:
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
@@ -27,6 +31,8 @@ def login(request):
         if form.is_valid():
             auth_login(request, form.get_user())
             return redirect('task_list')
+    elif request.user and request.user.username:
+        return redirect('task_list')
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})

@@ -24,6 +24,6 @@ path('create/', views.task_create, name='task_create'),
 path('update/<int:id>/', views.task_update, name='task_update'),
 path('delete/<int:id>/', views.task_delete, name='task_delete'),
 path('register/', views.register, name='register'),
-path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+path('login/', views.login, name='login'),
+path('logout/', views.logout, name='logout'),
 ]

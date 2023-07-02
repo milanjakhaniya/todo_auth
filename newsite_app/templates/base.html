@@ -21,21 +21,17 @@
     
   </head>
   <body class="bg-white">
-    <section class="vh-100" style="background-color: #9A616D;">
-      <div class="me-5" style="text-align: right">
+    <section style="background-color: #176B87;">
+      <div style="text-align: right">
         {% if user.is_authenticated %}
-  
-        <div>
-          <span class="badge bg-secondary">Welcome, {{ user.username }} ..! </span>
+        <div style="padding: 10px;">
+          <span class="me-3" style="color:white"><strong>Welcome, {{ user.username }} ..!</strong></span>
           <a href="{% url 'logout' %}">
             <button type="button" class="btn btn-sm btn-dark"><i class="fa-solid fa-power-off"></i> Sign Out</button>
           </a>
         </div>
-       
-        {% comment %} {% else %} {% endcomment %}
-        {% comment %} <a href="{% url 'login' %}">Login</a> |
-        <a href="{% url 'register' %}">Register</a> {% endcomment %}
-        {% endif %}
+      {% endif %}
+      
       </div>
       <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
