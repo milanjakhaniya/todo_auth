@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<div class="pt-1 mb-4 position-relative">
-    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;"> <strong>Following are your task list</strong></h5>
+
+<div class="row pt-1 mb-4 position-relative">
+    <h5 class="col-8 fw-normal mb-3 pb-3" style="letter-spacing: 1px;"> <strong>Following are your task list</strong></h5>
      <a href="{% url 'task_create' %}">
          <button class="btn btn-secondary btn-sn btn-block position-absolute top-0 end-0" type="button">Create Task</button>
      </a>

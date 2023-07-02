@@ -24,7 +24,7 @@
   <div id='error-alert'>
         {% csrf_token %}
         {% if form.errors %}
-        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
           <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
               <img src="{% static 'css/img/logo.png' %}" class="rounded me-2" alt="logo" style="hight:16px; width:30px;">
