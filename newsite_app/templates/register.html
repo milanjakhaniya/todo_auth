@@ -38,21 +38,12 @@
                     <div class="toast-body border-bottom">
                       <strong>{{ field.label }}:</strong><span> {{ error|escape }}</strong>
                     </div>
-                  
-                    {% comment %} <div class="alert alert-danger alert-dismissible">
-                      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                      <strong>{{ field.label }}</strong><span>{{ error|escape }}</strong>
-                    </div> {% endcomment %}
                 {% endfor %}
             {% endfor %}
             {% for error in form.non_field_errors %}
             <div class="toast-body border-bottom">
               <strong>{{ error|escape }}</strong>
             </div>
-                {% comment %} <div class="alert alert-danger alert-dismissible">
-                  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                  <strong>{{ error|escape }}</strong>
-                </div> {% endcomment %}
             {% endfor %}
           </div>
         </div>
@@ -97,7 +88,6 @@ setTimeout(function() {
 <button class="btn btn-dark btn-lg btn-block" type="submit">Register</button>
 </div>
 
-<a class="small text-muted" href="#!" style='visibility: hidden;'>Forgot password?</a>
 <p class="mb-5 pb-lg-2" style="color: #393f81;">Have an account? Click here to <a href="{% url 'login' %}"
 style="color: #393f81;">Login</a></p>
 {% comment %} <a href="#!" class="small text-muted">Terms of use.</a>
