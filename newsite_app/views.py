@@ -64,13 +64,11 @@ def task_create(request):
 @login_required
 def task_update(request, id):
     task = get_object_or_404(Task, pk=id)
-    print(f'Existing task: {task}')
     if task.user != request.user:
         return HttpResponseForbidden()
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
-            print(f'New task: {form}')
             form.save()
             return redirect('task_list')
     else:
